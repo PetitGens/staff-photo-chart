@@ -5,8 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhotoChartApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="800" MinWidth="650" MinHeight="350">
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Margin="0" Grid.ColumnSpan="2">
+            <MenuItem Header="MenuItem" VerticalAlignment="Top"/>
+        </Menu>
+        <Border BorderBrush="#FF828790" BorderThickness="1" Margin="10" CornerRadius="8" Grid.Row="1" MinWidth="400" MinHeight="250">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1" BlurRadius="10" Opacity="0.2"/>
+            </Border.Effect>
+            <Grid Height="Auto" Margin="10" Width="Auto" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30px"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListView x:Name="ListViewServices" Margin="6" Grid.Row="1" Grid.Column="0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <ListView x:Name="ListViewFunctions" Margin="6" Grid.Row="1" Grid.Column="1">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <ListView x:Name="ListViewMembers" Margin="6" Grid.Row="1" Grid.Column="2">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Label Content="Services" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="0" />
+                <Label Content="Fonctions" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="1" />
+                <Label Content="Membres" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="2" />
+            </Grid>
+        </Border>
+        <Grid Grid.Column="1" Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="13*"/>
+                <ColumnDefinition Width="17*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="TextBoxLastName" Grid.Column="1" Grid.Row="1" Margin="1,5" TextWrapping="Wrap" Text=""/>
+            <TextBox x:Name="TextBoxFirstName" Grid.Column="1" Grid.Row="2" Margin="1,5" TextWrapping="Wrap" Text=""/>
+            <TextBox x:Name="TextBoxService" Grid.Column="1" Grid.Row="5" Margin="1,5" TextWrapping="Wrap" Text=""/>
+            <TextBox x:Name="TextBoxFunction" Grid.Column="1" Grid.Row="4" Margin="1,5" TextWrapping="Wrap" Text=""/>
+            <TextBox x:Name="TextBoxPhone" Grid.Column="1" Grid.Row="6" Margin="1,5" TextWrapping="Wrap" Text=""/>
+            <Label Content="Nom" HorizontalAlignment="Right" Margin="0" Grid.Row="1" Height="Auto"/>
+            <Label Content="Prénom" HorizontalAlignment="Right" Margin="0" Grid.Row="2" Height="Auto"/>
+            <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="4" Height="Auto"/>
+            <Label Content="Function" HorizontalAlignment="Right" Margin="0" Grid.Row="5" Height="Auto"/>
+            <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="6" Height="Auto"/>
+        </Grid>
     </Grid>
 </Window>
