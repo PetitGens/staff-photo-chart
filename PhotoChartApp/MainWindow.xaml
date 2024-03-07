@@ -5,18 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhotoChartApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MinWidth="650" MinHeight="350">
+        Title="TROMBINOSCOPE" Height="350" Width="700" MinWidth="700" MinHeight="350">
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*" MinWidth="150"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu Margin="0" Grid.ColumnSpan="2">
-            <MenuItem Header="MenuItem" VerticalAlignment="Top"/>
+            <MenuItem x:Name="MenuItemDBConnect" Header="Connexion BDD" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold"/>
+            <MenuItem x:Name="MenuItemStaffList" Header="Liste du Personnel" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False"/>
+            <MenuItem x:Name="MenuItemServiceManagement" Header="Gestion : Services" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False" />
+            <MenuItem x:Name="MenuItemFunctionManagement" Header="Gestion : Fontions" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False" />
+            <MenuItem x:Name="MenuItemStaffManagement" Header="Gestion : Personnels" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False" />
+            <MenuItem x:Name="MenuItemManagement" Header="Gestionnaire" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" />
+            <MenuItem x:Name="MenuItemDBSettings" Header="Paramètres BDD" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" />
         </Menu>
         <Border BorderBrush="#FF828790" BorderThickness="1" Margin="10" CornerRadius="8" Grid.Row="1" MinWidth="400" MinHeight="250">
             <Border.Effect>
@@ -55,9 +61,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Label Content="Services" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="0" />
-                <Label Content="Fonctions" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="1" />
-                <Label Content="Membres" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="2" />
+                <Label Content="Services" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontFamily="Ubuntu" />
+                <Label Content="Fonctions" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="1" FontFamily="Ubuntu" />
+                <Label Content="Membres" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="2" FontFamily="Ubuntu" />
             </Grid>
         </Border>
         <Grid Grid.Column="1" Grid.Row="1" Margin="10">
@@ -72,19 +78,19 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="13*"/>
-                <ColumnDefinition Width="17*"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <TextBox x:Name="TextBoxLastName" Grid.Column="1" Grid.Row="1" Margin="1,5" TextWrapping="Wrap" Text=""/>
             <TextBox x:Name="TextBoxFirstName" Grid.Column="1" Grid.Row="2" Margin="1,5" TextWrapping="Wrap" Text=""/>
             <TextBox x:Name="TextBoxService" Grid.Column="1" Grid.Row="5" Margin="1,5" TextWrapping="Wrap" Text=""/>
             <TextBox x:Name="TextBoxFunction" Grid.Column="1" Grid.Row="4" Margin="1,5" TextWrapping="Wrap" Text=""/>
             <TextBox x:Name="TextBoxPhone" Grid.Column="1" Grid.Row="6" Margin="1,5" TextWrapping="Wrap" Text=""/>
-            <Label Content="Nom" HorizontalAlignment="Right" Margin="0" Grid.Row="1" Height="Auto"/>
-            <Label Content="Prénom" HorizontalAlignment="Right" Margin="0" Grid.Row="2" Height="Auto"/>
-            <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="4" Height="Auto"/>
-            <Label Content="Function" HorizontalAlignment="Right" Margin="0" Grid.Row="5" Height="Auto"/>
-            <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="6" Height="Auto"/>
+            <Label Content="Nom" HorizontalAlignment="Right" Margin="0" Grid.Row="1" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
+            <Label Content="Prénom" HorizontalAlignment="Right" Margin="0" Grid.Row="2" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
+            <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="4" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
+            <Label Content="Function" HorizontalAlignment="Right" Margin="0" Grid.Row="5" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
+            <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="6" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
         </Grid>
     </Grid>
 </Window>
