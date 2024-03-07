@@ -10,21 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PhotoChartApp
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour DatabaseConfigWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DatabaseConfigWindow : Window
     {
-        public MainWindow()
+        public DatabaseConfigWindow()
         {
             InitializeComponent();
-            DatabaseConfigWindow d = new DatabaseConfigWindow();
-            d.ShowDialog();
+
+            
         }
     }
 }
