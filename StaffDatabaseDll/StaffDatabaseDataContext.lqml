@@ -17,8 +17,8 @@
       <Column Name="idFonction" Member="IdFonction" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="d2af3007-1d8d-4039-b671-ece799a48027" />
       <Column Name="telephone" Member="Telephone" Type="System.String" DbType="TEXT NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="&quot;NULL&quot;" ed:ValidateRequired="false" ed:Guid="7262814e-7d47-4426-bd1a-d2b148c9dc34" />
       <Column Name="photo" Member="Photo" Type="System.Byte[]" DbType="BLOB NULL" CanBeNull="true" UpdateCheck="Never" DefaultValue="NULL" ed:ValidateRequired="false" ed:Guid="201ecb17-e855-49c4-9102-ba8a2694285c" />
-      <Association Name="Service_Personnel" ed:AssociationGuid="10c6ea3f-5c0e-48ac-933c-ab96a9a7b444" Member="Service" ed:Guid="deb9fc18-5902-48b4-8467-d090f79ee7ae" ThisKey="IdService" OtherKey="Id" Type="Service" DeleteRule="RESTRICT" IsForeignKey="true" />
       <Association Name="Fonction_Personnel" ed:AssociationGuid="c02bfcca-4438-46ca-8c9a-a497f94a6709" Member="Fonction" ed:Guid="defc4caa-7a69-4208-acba-20f30886cc36" ThisKey="IdFonction" OtherKey="Id" Type="Fonction" DeleteRule="RESTRICT" IsForeignKey="true" />
+      <Association Name="Service_Personnel" ed:AssociationGuid="10c6ea3f-5c0e-48ac-933c-ab96a9a7b444" Member="Service" ed:Guid="deb9fc18-5902-48b4-8467-d090f79ee7ae" ThisKey="IdService" OtherKey="Id" Type="Service" DeleteRule="RESTRICT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="bddpersonnels.services" Member="Services">
