@@ -44,7 +44,7 @@ namespace PhotoChartApp
             Database = null;
             
             LoginWindow loginWindow = new LoginWindow();
-            loginWindow.ShowDialog();*/
+            loginWindow.ShowDialog();
 
             ServicesManagementWindow servicesManagementWindow = new ServicesManagementWindow();
             servicesManagementWindow.Show();
