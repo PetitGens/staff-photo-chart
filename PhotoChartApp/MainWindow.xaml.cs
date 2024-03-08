@@ -33,7 +33,10 @@ namespace PhotoChartApp
             loginWindow.ShowDialog();*/
 
             ServicesManagementWindow servicesManagementWindow = new ServicesManagementWindow();
-            servicesManagementWindow.ShowDialog();
+            servicesManagementWindow.Show();
+
+            FunctionsManagementWindow functionsManagementWindow = new FunctionsManagementWindow();
+            functionsManagementWindow.Show();
         }
     }
 }
