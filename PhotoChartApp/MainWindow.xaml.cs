@@ -1,6 +1,9 @@
-﻿using System;
+﻿using BddpersonnelContext;
+using StaffDatabaseDll;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +26,19 @@ namespace PhotoChartApp
         public MainWindow()
         {
             InitializeComponent();
+            StaffDatabase.ConnectionString = "(I won't commit with my connection string)";
+            StaffDatabase database = StaffDatabase.GetInstance();
+            List<Personnel> personnels = database.GetStaffList();
+
+            Console.WriteLine("AFFICHAGE DU PERSONNEL");
+            Console.WriteLine("----------------------");
+
+            foreach (Personnel personnel in personnels)
+            {
+                Console.WriteLine(personnel.Prenom + ' ' + personnel.Nom);
+            }
+
+            Console.WriteLine("----------------------");
         }
     }
 }

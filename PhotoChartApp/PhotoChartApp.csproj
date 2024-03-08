@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StaffDatabaseDll\StaffDatabaseDll.csproj">
+      <Project>{31b6430d-94ae-4c53-80b6-d32778ce8d52}</Project>
+      <Name>StaffDatabaseDll</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
