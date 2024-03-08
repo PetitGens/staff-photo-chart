@@ -26,18 +26,14 @@ namespace PhotoChartApp
         public MainWindow()
         {
             InitializeComponent();
-            StaffDatabase database = DatabaseConnector.Instance.GetDatabase();
-            List<Personnel> personnels = database.GetStaffList();
 
-            Console.WriteLine("AFFICHAGE DU PERSONNEL");
-            Console.WriteLine("----------------------");
+            DatabaseConfigWindow databaseConfigWindow = new DatabaseConfigWindow();
+            databaseConfigWindow.ShowDialog();
 
-            foreach (Personnel personnel in personnels)
-            {
-                Console.WriteLine(personnel.Prenom + ' ' + personnel.Nom);
-            }
 
-            Console.WriteLine("----------------------");
+
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();
         }
     }
 }
