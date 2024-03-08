@@ -42,12 +42,15 @@ namespace PhotoChartApp
         {
             InitializeComponent();
             Database = null;
-
-            /*DatabaseConnector.Instance.UpdateDatabaseSettings();
-            DatabaseConnector.Instance.GetDatabase().GetStaffList();*/
-
+            
             LoginWindow loginWindow = new LoginWindow();
-            loginWindow.ShowDialog();
+            loginWindow.ShowDialog();*/
+
+            ServicesManagementWindow servicesManagementWindow = new ServicesManagementWindow();
+            servicesManagementWindow.Show();
+
+            FunctionsManagementWindow functionsManagementWindow = new FunctionsManagementWindow();
+            functionsManagementWindow.Show();
         }
 
         private void MenuItemDBSettings_Click(object sender, RoutedEventArgs e)

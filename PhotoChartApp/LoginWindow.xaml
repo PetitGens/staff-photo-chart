@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhotoChartApp"
         mc:Ignorable="d"
-        Title="Connexion" Height="300" Width="450">
-    <Grid Background="#85ac98">
+        Title="Connexion en mode Gestionnaire" Height="300" Width="450" Background="#FF78A4BD">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
-           
+
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Margin="20,50,20,0">
@@ -33,9 +33,9 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonConnection" Content="Connexion" Margin="10"/>
-            <Button x:Name="ButtonCancel" Content="Annuler" Margin="10" Grid.Column="1"/>
+            <Button x:Name="ButtonConnection" Content="Connexion" Margin="10" FontFamily="Ubuntu" FontWeight="Bold" FontSize="16" Foreground="#FF4F6C7C" Background="#FFDAE3E8"/>
+            <Button x:Name="ButtonCancel" Content="Annuler" Margin="10" Grid.Column="1" FontFamily="Ubuntu" FontSize="16" Foreground="#FF4F6C7C" Background="#FFDAE3E8"/>
         </Grid>
-        
+
     </Grid>
 </Window>
