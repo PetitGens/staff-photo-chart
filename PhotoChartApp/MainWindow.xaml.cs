@@ -23,9 +23,25 @@ namespace PhotoChartApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private StaffDatabase database;
+
+        private StaffDatabase Database
+        {
+            get { return database;}
+            set
+            {
+                database = value;
+                if(value == null)
+                {
+                    Title = "TROMBINOSCOPE - NON CONNECTÉ";
+                }
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+            Database = null;
 
             /*DatabaseConnector.Instance.UpdateDatabaseSettings();
             DatabaseConnector.Instance.GetDatabase().GetStaffList();*/
@@ -44,17 +60,31 @@ namespace PhotoChartApp
             }
 
             databaseConfigWindow.SaveSettings();
+            ConnectToDatabase();
+        }
+
+        private void MenuItemDBConnect_Click(object sender, RoutedEventArgs e)
+        {
+            ConnectToDatabase();
+        }
+
+        private void ConnectToDatabase()
+        {
             try
             {
                 DatabaseConnector.Instance.UpdateDatabaseSettings();
-                DatabaseConnector.Instance.GetDatabase().GetStaffList();
+                database = DatabaseConnector.Instance.GetDatabase();
+                database.GetStaffList();
             }
             catch (Exception ex)
             {
                 new ErrorAlert("Erreur de connexion à la base de données :\n" + ex.Message,
                     "Erreur base de données").Show();
+                Database = null;
                 return;
             }
+
+            Title = "TROMBINOSCOPE - CONNECTÉ";
         }
     }
 }
