@@ -83,8 +83,8 @@
             </Grid.ColumnDefinitions>
             <TextBox x:Name="TextBoxLastName" Grid.Column="1" Grid.Row="1" Margin="1,5" TextWrapping="Wrap" Text=""/>
             <TextBox x:Name="TextBoxFirstName" Grid.Column="1" Grid.Row="2" Margin="1,5" TextWrapping="Wrap" Text=""/>
-            <TextBox x:Name="TextBoxService" Grid.Column="1" Grid.Row="5" Margin="1,5" TextWrapping="Wrap" Text=""/>
             <TextBox x:Name="TextBoxFunction" Grid.Column="1" Grid.Row="4" Margin="1,5" TextWrapping="Wrap" Text=""/>
+            <TextBox x:Name="TextBoxService" Grid.Column="1" Grid.Row="5" Margin="1,5" TextWrapping="Wrap" Text=""/>
             <TextBox x:Name="TextBoxPhone" Grid.Column="1" Grid.Row="6" Margin="1,5" TextWrapping="Wrap" Text=""/>
             <Label Content="Nom" HorizontalAlignment="Right" Margin="0" Grid.Row="1" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
             <Label Content="Prénom" HorizontalAlignment="Right" Margin="0" Grid.Row="2" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
