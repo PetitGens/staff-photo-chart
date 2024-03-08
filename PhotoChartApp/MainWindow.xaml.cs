@@ -27,13 +27,34 @@ namespace PhotoChartApp
         {
             InitializeComponent();
 
-            DatabaseConfigWindow databaseConfigWindow = new DatabaseConfigWindow();
-            databaseConfigWindow.ShowDialog();
-
-
+            /*DatabaseConnector.Instance.UpdateDatabaseSettings();
+            DatabaseConnector.Instance.GetDatabase().GetStaffList();*/
 
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.ShowDialog();
+        }
+
+        private void MenuItemDBSettings_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseConfigWindow databaseConfigWindow = new DatabaseConfigWindow();
+
+            if (databaseConfigWindow.ShowDialog() == false)
+            {
+                return;
+            }
+
+            databaseConfigWindow.SaveSettings();
+            try
+            {
+                DatabaseConnector.Instance.UpdateDatabaseSettings();
+                DatabaseConnector.Instance.GetDatabase().GetStaffList();
+            }
+            catch (Exception ex)
+            {
+                new ErrorAlert("Erreur de connexion à la base de données :\n" + ex.Message,
+                    "Erreur base de données").Show();
+                return;
+            }
         }
     }
 }

@@ -31,6 +31,7 @@ namespace StaffDatabaseDll
                 throw new ArgumentNullException("The connection string is empty or null !");
             }
             dataContext = new BddpersonnelDataContext(connectionString);
+            //TODO test connection
         }
 
         public static StaffDatabase GetInstance()
