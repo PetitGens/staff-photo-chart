@@ -15,15 +15,23 @@ using System.Windows.Shapes;
 namespace PhotoChartApp
 {
     /// <summary>
-    /// Logique d'interaction pour DatabaseConfigWindow.xaml
+    /// Logique d'interaction pour Login.xaml
     /// </summary>
-    public partial class DatabaseConfigWindow : Window
+    public partial class LoginWindow : Window
     {
-        public DatabaseConfigWindow()
+        public LoginWindow()
         {
             InitializeComponent();
-          
+        }
 
+        private void ButtonCancel_Click(object sender)
+        {
+            Close();
+        }
+
+        private void ButtonConnection_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO handle connexion
         }
     }
 }
