@@ -26,8 +26,7 @@ namespace PhotoChartApp
         public MainWindow()
         {
             InitializeComponent();
-            StaffDatabase.ConnectionString = "(I won't commit with my connection string)";
-            StaffDatabase database = StaffDatabase.GetInstance();
+            StaffDatabase database = DatabaseConnector.Instance.GetDatabase();
             List<Personnel> personnels = database.GetStaffList();
 
             Console.WriteLine("AFFICHAGE DU PERSONNEL");
