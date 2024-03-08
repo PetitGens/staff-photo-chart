@@ -23,14 +23,14 @@ namespace PhotoChartApp
         public MainWindow()
         {
             InitializeComponent();
-            /*
+            
             DatabaseConfigWindow databaseConfigWindow = new DatabaseConfigWindow();
             databaseConfigWindow.ShowDialog();
 
 
 
             LoginWindow loginWindow = new LoginWindow();
-            loginWindow.ShowDialog();*/
+            loginWindow.ShowDialog();
 
             ServicesManagementWindow servicesManagementWindow = new ServicesManagementWindow();
             servicesManagementWindow.Show();

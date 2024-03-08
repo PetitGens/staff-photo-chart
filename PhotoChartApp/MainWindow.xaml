@@ -90,7 +90,7 @@
             <Label Content="Prénom" HorizontalAlignment="Right" Margin="0" Grid.Row="2" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
             <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="4" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
             <Label Content="Function" HorizontalAlignment="Right" Margin="0" Grid.Row="5" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
-            <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="6" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
+            <Label Content="Tél. :" HorizontalAlignment="Right" Margin="0" Grid.Row="6" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
         </Grid>
     </Grid>
 </Window>
