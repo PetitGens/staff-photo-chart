@@ -2,7 +2,9 @@
 using StaffDatabaseDll;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +37,33 @@ namespace PhotoChartApp
                 {
                     Title = "TROMBINOSCOPE - NON CONNECTÉ";
                 }
+                UpdateDataContexts();
+            }
+        }
+
+        private ObservableCollection<Service> Services
+        {
+            get
+            {
+                if(database == null)
+                {
+                    return null;
+                }
+
+                return database.Services;
+            }
+        }
+
+        private ObservableCollection<Fonction> Functions
+        {
+            get
+            {
+                if (database == null)
+                {
+                    return null;
+                }
+
+                return database.Functions;
             }
         }
 
@@ -43,14 +72,21 @@ namespace PhotoChartApp
             InitializeComponent();
             Database = null;
             
-            LoginWindow loginWindow = new LoginWindow();
+           /* LoginWindow loginWindow = new LoginWindow();
             loginWindow.ShowDialog();
 
             ServicesManagementWindow servicesManagementWindow = new ServicesManagementWindow();
             servicesManagementWindow.Show();
 
             FunctionsManagementWindow functionsManagementWindow = new FunctionsManagementWindow();
-            functionsManagementWindow.Show();
+            functionsManagementWindow.Show();*/
+        }
+
+        private void UpdateDataContexts()
+        {
+            ListBoxServices.DataContext = Services;
+            ListBoxFunctions.DataContext = Functions;
+            ListBoxMembers.DataContext = null;
         }
 
         private void MenuItemDBSettings_Click(object sender, RoutedEventArgs e)
@@ -76,8 +112,8 @@ namespace PhotoChartApp
             try
             {
                 DatabaseConnector.Instance.UpdateDatabaseSettings();
-                database = DatabaseConnector.Instance.GetDatabase();
-                database.GetStaffList();
+                Database = DatabaseConnector.Instance.GetDatabase();
+                Database.GetStaffList();
             }
             catch (Exception ex)
             {
@@ -88,6 +124,27 @@ namespace PhotoChartApp
             }
 
             Title = "TROMBINOSCOPE - CONNECTÉ";
+        }
+
+        private void ListBoxServices_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ListBoxServices.SelectedItem == null)
+            {
+                return;
+            }
+            ListBoxFunctions.SelectedItem = null;
+            ListBoxMembers.DataContext =  ((Service) ListBoxServices.SelectedItem).Personnels.ToList();
+        }
+
+        private void ListBoxFunctions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ListBoxFunctions.SelectedItem == null)
+            {
+                return;
+            }
+
+            ListBoxServices.SelectedItem = null;
+            ListBoxMembers.DataContext = ((Fonction) ListBoxFunctions.SelectedItem).Personnels.ToList();
         }
     }
 }

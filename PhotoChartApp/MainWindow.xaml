@@ -38,15 +38,15 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ListView x:Name="ListViewServices" Margin="6" Grid.Row="1" Grid.Column="0">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
 
-                <ListView x:Name="ListViewFunctions" Margin="6" Grid.Row="1" Grid.Column="1">
+
+                <ListBox ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Intitule" x:Name="ListBoxServices" Margin="6" Grid.Row="1" Grid.Column="0" SelectionChanged="ListBoxServices_SelectionChanged"/>
+
+                <ListBox ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Intitule"  x:Name="ListBoxFunctions" Margin="6" Grid.Row="1" Grid.Column="1" SelectionChanged="ListBoxFunctions_SelectionChanged"/>
+
+                <ListBox ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Nom" x:Name="ListBoxMembers" Margin="6" Grid.Row="1" Grid.Column="2"/>
+
+                <!--<ListView x:Name="ListViewFunctions" Margin="6" Grid.Row="1" Grid.Column="1">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn/>
@@ -60,7 +60,8 @@
                             <GridViewColumn/>
                         </GridView>
                     </ListView.View>
-                </ListView>
+                </ListView>-->
+
                 <Label Content="Services" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontFamily="Ubuntu" />
                 <Label Content="Fonctions" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="1" FontFamily="Ubuntu" />
                 <Label Content="Membres" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="2" FontFamily="Ubuntu" />
@@ -81,15 +82,15 @@
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="TextBoxLastName" Grid.Column="1" Grid.Row="1" Margin="1,5" TextWrapping="Wrap" Text=""/>
-            <TextBox x:Name="TextBoxFirstName" Grid.Column="1" Grid.Row="2" Margin="1,5" TextWrapping="Wrap" Text=""/>
-            <TextBox x:Name="TextBoxFunction" Grid.Column="1" Grid.Row="4" Margin="1,5" TextWrapping="Wrap" Text=""/>
-            <TextBox x:Name="TextBoxService" Grid.Column="1" Grid.Row="5" Margin="1,5" TextWrapping="Wrap" Text=""/>
-            <TextBox x:Name="TextBoxPhone" Grid.Column="1" Grid.Row="6" Margin="1,5" TextWrapping="Wrap" Text=""/>
+            <TextBox x:Name="TextBoxLastName" Grid.Column="1" Grid.Row="1" Margin="1,5" TextWrapping="Wrap" Text="{Binding ElementName=ListBoxMembers, Path=SelectedItem.Nom}" IsEnabled="False"/>
+            <TextBox x:Name="TextBoxFirstName" Grid.Column="1" Grid.Row="2" Margin="1,5" TextWrapping="Wrap" Text="{Binding ElementName=ListBoxMembers, Path=SelectedItem.Prenom}" IsEnabled="False"/>
+            <TextBox x:Name="TextBoxService" Grid.Column="1" Grid.Row="4" Margin="1,5" TextWrapping="Wrap" Text="{Binding ElementName=ListBoxMembers, Path=SelectedItem.Service.Intitule}" IsEnabled="False"/>
+            <TextBox x:Name="TextBoxFunction" Grid.Column="1" Grid.Row="5" Margin="1,5" TextWrapping="Wrap" Text="{Binding ElementName=ListBoxMembers, Path=SelectedItem.Fonction.Intitule}" IsEnabled="False"/>
+            <TextBox x:Name="TextBoxPhone" Grid.Column="1" Grid.Row="6" Margin="1,5" TextWrapping="Wrap" Text="" IsEnabled="False"/>
             <Label Content="Nom" HorizontalAlignment="Right" Margin="0" Grid.Row="1" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
             <Label Content="Prénom" HorizontalAlignment="Right" Margin="0" Grid.Row="2" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
             <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="4" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
-            <Label Content="Function" HorizontalAlignment="Right" Margin="0" Grid.Row="5" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
+            <Label Content="Fonction" HorizontalAlignment="Right" Margin="0" Grid.Row="5" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
             <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="6" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
         </Grid>
     </Grid>
