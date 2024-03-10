@@ -27,6 +27,12 @@ namespace PhotoChartApp
     {
         private StaffDatabase database;
 
+        /// <value>
+        /// The database object (or null if not connected).
+        /// It permits to manage staff, services and functions.
+        /// <br/>
+        /// Its setter also manage the title Window and updates DataContexts.
+        /// </value>
         private StaffDatabase Database
         {
             get { return database;}
@@ -41,6 +47,9 @@ namespace PhotoChartApp
             }
         }
 
+        /// <value>
+        /// An observable list of services. Null if no database connection.
+        /// </value>
         private ObservableCollection<Service> Services
         {
             get
@@ -54,6 +63,9 @@ namespace PhotoChartApp
             }
         }
 
+        /// <value>
+        /// An observable list of functions. Null if no database connection.
+        /// </value>
         private ObservableCollection<Fonction> Functions
         {
             get
@@ -67,6 +79,9 @@ namespace PhotoChartApp
             }
         }
 
+        /// <summary>
+        /// Initialize the window's components and the Database property.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -82,6 +97,11 @@ namespace PhotoChartApp
             functionsManagementWindow.Show();*/
         }
 
+        /// <summary>
+        /// Update the data contexts for the three ListBox.
+        /// <br/>
+        /// Must be called when the database connection is updated.
+        /// </summary>
         private void UpdateDataContexts()
         {
             ListBoxServices.DataContext = Services;
@@ -89,6 +109,12 @@ namespace PhotoChartApp
             ListBoxMembers.DataContext = null;
         }
 
+        /// <summary>
+        /// Opens the database configuration window as a dialog.
+        /// <br/>
+        /// If the user choose to confirm settings (true result),
+        /// saves them and tries to connect to the database.
+        /// </summary>
         private void MenuItemDBSettings_Click(object sender, RoutedEventArgs e)
         {
             DatabaseConfigWindow databaseConfigWindow = new DatabaseConfigWindow();
@@ -102,11 +128,22 @@ namespace PhotoChartApp
             ConnectToDatabase();
         }
 
+        /// <summary>
+        /// Tries to connect to the database.
+        /// </summary>
         private void MenuItemDBConnect_Click(object sender, RoutedEventArgs e)
         {
             ConnectToDatabase();
         }
 
+        /// <summary>
+        /// Tries to connect to the database 
+        /// with the info in the application settings.
+        /// If successful, the window's title is also updated.
+        /// <br/>
+        /// If an error occurs, sets the database to null (which updates the window's title and the list boxes)
+        /// and displays an error alert.
+        /// </summary>
         private void ConnectToDatabase()
         {
             try
@@ -126,6 +163,10 @@ namespace PhotoChartApp
             Title = "TROMBINOSCOPE - CONNECTÉ";
         }
 
+        /// <summary>
+        /// Remove the selection of the functions list box
+        /// and fill the staff list box with the members of the selected service.
+        /// </summary>
         private void ListBoxServices_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(ListBoxServices.SelectedItem == null)
@@ -136,6 +177,10 @@ namespace PhotoChartApp
             ListBoxMembers.DataContext =  ((Service) ListBoxServices.SelectedItem).Personnels.ToList();
         }
 
+        /// <summary>
+        /// Remove the selection of the services list box
+        /// and fill the staff list box with the members of the selected function.
+        /// </summary>
         private void ListBoxFunctions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(ListBoxFunctions.SelectedItem == null)

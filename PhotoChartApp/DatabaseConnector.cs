@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace PhotoChartApp
 {
+    /// <summary>
+    /// An intermediary class for database connection.
+    /// It is used to build the connection string with the settings.
+    /// </summary>
     internal class DatabaseConnector
     {
         private const string DATABASE_NAME = "bddpersonnels";
@@ -19,10 +23,16 @@ namespace PhotoChartApp
         private string username;
         private string password;
 
+        /// <summary>
+        /// Calls an update to retrieve database settings.
+        /// </summary>
         private DatabaseConnector() {
             UpdateDatabaseSettings();
         }
 
+        /// <value>
+        /// The connector instance (singleton).
+        /// </value>
         public static DatabaseConnector Instance
         {
             get
@@ -35,6 +45,9 @@ namespace PhotoChartApp
             }
         }
 
+        /// <summary>
+        /// Retrieves the database settings and updates the connection string.
+        /// </summary>
         public void UpdateDatabaseSettings()
         {
             host = Properties.Settings.Default.IPAdress;
@@ -53,6 +66,12 @@ namespace PhotoChartApp
             StaffDatabase.ConnectionString = connectionString;
         }
 
+        /// <summary>
+        /// Get the database instance.
+        /// If it wasn't connected yet, it will connect with the current connection string
+        /// as it's a singleton too.
+        /// </summary>
+        /// <returns>The database object</returns>
         public StaffDatabase GetDatabase()
         {
             try
