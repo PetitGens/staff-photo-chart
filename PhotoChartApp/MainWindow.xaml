@@ -44,7 +44,20 @@
 
                 <ListBox ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Intitule"  x:Name="ListBoxFunctions" Margin="6" Grid.Row="1" Grid.Column="1" SelectionChanged="ListBoxFunctions_SelectionChanged"/>
 
-                <ListBox ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Nom" x:Name="ListBoxMembers" Margin="6" Grid.Row="1" Grid.Column="2"/>
+                <ListBox ItemsSource="{Binding UpdateSourceTrigger=PropertyChanged}" x:Name="ListBoxMembers" Margin="6" Grid.Row="1" Grid.Column="2">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="Nom" />
+                                        <Binding Path="Prenom" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
 
                 <!--<ListView x:Name="ListViewFunctions" Margin="6" Grid.Row="1" Grid.Column="1">
                     <ListView.View>
