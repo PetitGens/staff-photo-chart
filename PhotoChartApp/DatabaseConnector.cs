@@ -61,6 +61,7 @@ namespace PhotoChartApp
                 + ";Host=" + host
                 + ";Port=" + port
                 + ";Database=" + DATABASE_NAME
+                + ";CharSet=UTF8"
             ;
 
             StaffDatabase.ConnectionString = connectionString;
