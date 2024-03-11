@@ -52,7 +52,7 @@ namespace PhotoChartApp
         /// <value>
         /// An observable list of services. Null if no database connection.
         /// </value>
-        private ObservableCollection<Service> Services
+        private object Services
         {
             get
             {
@@ -61,14 +61,14 @@ namespace PhotoChartApp
                     return null;
                 }
 
-                return database.Services;
+                return database.DataContext.Services;
             }
         }
 
         /// <value>
         /// An observable list of functions. Null if no database connection.
         /// </value>
-        private ObservableCollection<Fonction> Functions
+        private object Functions
         {
             get
             {
@@ -77,7 +77,7 @@ namespace PhotoChartApp
                     return null;
                 }
 
-                return database.Functions;
+                return database.DataContext.Fonctions;
             }
         }
 
@@ -182,7 +182,7 @@ namespace PhotoChartApp
                 return;
             }
             ListBoxFunctions.SelectedItem = null;
-            ListBoxMembers.DataContext =  ((Service) ListBoxServices.SelectedItem).Personnels.ToList();
+            ListBoxMembers.DataContext = ((Service)ListBoxServices.SelectedItem).Personnels;
         }
 
         /// <summary>
