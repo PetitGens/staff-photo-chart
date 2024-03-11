@@ -13,7 +13,6 @@ INSERT INTO services (intitule) VALUES ('Module Bases de données');
 INSERT INTO services (intitule) VALUES ('Département Informatique');
 INSERT INTO services (intitule) VALUES ('BUT INFO 2A');
 
-
 INSERT INTO `personnels` (`id`, `prenom`, `nom`, `idService`, `idFonction`, `telephone`, `photo`) 
 VALUES ('1', 'Philippe', 'Brutus', '1', '1', NULL, NULL);
 INSERT INTO personnels (prenom, nom, idService, idFonction) VALUES ('Nouzha', 'Tber', '3', '2');
@@ -29,3 +28,5 @@ INSERT INTO personnels (prenom, nom, idService, idFonction) VALUES ('Julien', 'S
 INSERT INTO personnels (prenom, nom, idService, idFonction) VALUES ('Clément', 'Baratin', '6', '7');
 INSERT INTO personnels (prenom, nom, idService, idFonction) VALUES ('Guilhem', 'Saint-Gaudin', '6', '7');
 INSERT INTO personnels (prenom, nom, idService, idFonction) VALUES ('Victor', 'Friboulet', '6', '7');
+
+INSERT INTO gestionnaires (username, motdepasse) VALUES ('admin', 'admin');

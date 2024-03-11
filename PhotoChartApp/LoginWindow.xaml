@@ -25,17 +25,16 @@
             <Label Grid.Row="0" Grid.Column="0"  Content="Nom d'utilisateur" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,10" VerticalAlignment="Top" FontSize="14"/>
             <Label Grid.Row="1" Grid.Column="0" Content="Mot de passe"      Foreground="White" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,10" VerticalAlignment="Top" FontSize="14"/>
 
-            <TextBox x:Name="TextBoxUsername" Grid.Row="0"  Grid.Column="1" VerticalContentAlignment="Center" FontSize="12" Margin="10,10,0,10" TextWrapping="NoWrap" VerticalAlignment="Top" Height="30" />
-            <TextBox x:Name="TextBoxPassword" Grid.Row="1"  Grid.Column="1" VerticalContentAlignment="Center" FontSize="12" Margin="10,10,0,10" TextWrapping="NoWrap" VerticalAlignment="Top" Height="30" />
+            <TextBox x:Name="TextBoxUsername" Grid.Row="0"  Grid.Column="1" VerticalContentAlignment="Center" FontSize="12" Margin="10,10,0,10" TextWrapping="NoWrap" VerticalAlignment="Top" Height="30" TextChanged="Credentials_Changed" />
+            <PasswordBox x:Name="TextBoxPassword" Grid.Row="1"  Grid.Column="1" VerticalContentAlignment="Center" FontSize="12" Margin="10,10,0,10" VerticalAlignment="Top" Height="30" PasswordChanged="Credentials_Changed" />
         </Grid>
         <Grid Grid.Row="1" Margin="50,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonConnection" Content="Connexion" Margin="10" FontFamily="Ubuntu" FontWeight="Bold" FontSize="16" Foreground="#FF4F6C7C" Background="#FFDAE3E8"/>
-            <Button x:Name="ButtonCancel" Content="Annuler" Margin="10" Grid.Column="1" FontFamily="Ubuntu" FontSize="16" Foreground="#FF4F6C7C" Background="#FFDAE3E8"/>
+            <Button x:Name="ButtonConnection" IsEnabled="False" Content="Connexion" Margin="10" FontFamily="Ubuntu" FontWeight="Bold" FontSize="16" Foreground="#FF4F6C7C" Background="#FFDAE3E8" Click="ButtonConnection_Click"/>
+            <Button x:Name="ButtonCancel" Content="Annuler" Margin="10" Grid.Column="1" FontFamily="Ubuntu" FontSize="16" Foreground="#FF4F6C7C" Background="#FFDAE3E8" Click="ButtonCancel_Click"/>
         </Grid>
-
     </Grid>
 </Window>

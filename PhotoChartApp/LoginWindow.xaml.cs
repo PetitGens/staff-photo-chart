@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BddpersonnelContext;
+using StaffDatabaseDll;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,14 +26,43 @@ namespace PhotoChartApp
             InitializeComponent();
         }
 
-        private void ButtonCancel_Click(object sender)
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
         private void ButtonConnection_Click(object sender, RoutedEventArgs e)
         {
-            // TODO handle connexion
+            try
+            {
+                LoginManager.Instance.Login(TextBoxUsername.Text, TextBoxPassword.Password);
+                Close();
+            }
+            catch (ArgumentNullException)
+            {
+                (new ErrorAlert("La base de données n'est pas connectée.", "Erreur connexion")).Show();
+                Close();
+            }
+            catch (ArgumentException)
+            {
+                (new ErrorAlert("Mot de passe ou nom d'utilisateur incorrect !", "Échec de la connection")).Show();
+            }
+            catch(Exception ex)
+            {
+                (new ErrorAlert("Erreur pendant la connexion :\n" + ex.Message, "Erreur connexion")).Show();
+            }
+        }
+
+        private void Credentials_Changed(object sender, RoutedEventArgs e)
+        {
+            if(TextBoxUsername.Text == "" || TextBoxPassword.Password == "")
+            {
+                ButtonConnection.IsEnabled = false;
+            }
+            else
+            {
+                ButtonConnection.IsEnabled = true;
+            }
         }
     }
 }

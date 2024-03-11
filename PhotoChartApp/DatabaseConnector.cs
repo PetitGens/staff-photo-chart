@@ -77,7 +77,18 @@ namespace PhotoChartApp
         {
             try
             { 
-                return StaffDatabase.GetInstance();
+                StaffDatabase database =  StaffDatabase.GetInstance();
+
+                try
+                {
+                    database.DataContext.Services.First();
+                }
+                catch
+                {
+                    return null;
+                }
+
+                return database;
             }
             catch { throw; }
         }

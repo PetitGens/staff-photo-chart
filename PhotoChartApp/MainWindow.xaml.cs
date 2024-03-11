@@ -191,5 +191,32 @@ namespace PhotoChartApp
             ListBoxServices.SelectedItem = null;
             ListBoxMembers.DataContext = ((Fonction) ListBoxFunctions.SelectedItem).Personnels.ToList();
         }
+
+        private void MenuItemManagement_Click(object sender, RoutedEventArgs e)
+        {
+            SetManagementMenusState(false);
+
+            if(Database == null)
+            {
+                return;
+            }
+
+            LoginManager loginManager = LoginManager.Instance;
+
+            if((new LoginWindow()).ShowDialog() == true || loginManager.IsLoggedIn())
+            {
+                SetManagementMenusState(true);
+            }
+
+
+        }
+
+        private void SetManagementMenusState(bool enabled)
+        {
+            MenuItemStaffList.IsEnabled = enabled;
+            MenuItemServiceManagement.IsEnabled = enabled;
+            MenuItemFunctionManagement.IsEnabled = enabled;
+            MenuItemStaffManagement.IsEnabled = enabled;
+        }
     }
 }

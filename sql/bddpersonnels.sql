@@ -20,6 +20,10 @@ CREATE TABLE `personnels` (
   `photo` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
+CREATE TABLE gestionnaires (
+  `username` CHAR(32) PRIMARY KEY,
+  `motdepasse` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `services` (
   `id` int(11) NOT NULL,

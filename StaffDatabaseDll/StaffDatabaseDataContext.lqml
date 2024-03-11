@@ -28,4 +28,10 @@
       <Association Name="Service_Personnel" ed:AssociationGuid="10c6ea3f-5c0e-48ac-933c-ab96a9a7b444" Member="Personnels" ed:Guid="6393b45f-b661-4364-ba0d-e2ea14af7817" ThisKey="Id" OtherKey="IdService" Type="Personnel" />
     </Type>
   </Table>
+  <Table Name="bddpersonnels.gestionnaires" Member="Gestionnaires">
+    <Type Name="Gestionnaire" ed:Guid="73d09b3a-b259-49df-94e9-4641cd482e04">
+      <Column Name="username" Member="Username" Type="System.String" DbType="CHAR(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" FixedLength="true" MaxLength="32" ed:ValidateMaxLength="32" ed:ValidateRequired="true" ed:Guid="d6ef6eb0-2b2e-4071-bbc7-5b07a043d027" />
+      <Column Name="motdepasse" Member="Motdepasse" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="fc8ef16f-cb12-4245-8e7d-50b4b5bd0017" />
+    </Type>
+  </Table>
 </Database>
