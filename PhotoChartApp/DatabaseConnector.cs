@@ -23,6 +23,13 @@ namespace PhotoChartApp
         private string username;
         private string password;
 
+        private StaffDatabase database;
+
+        public StaffDatabase Database
+        {
+            get { return database; }
+        }
+
         /// <summary>
         /// Calls an update to retrieve database settings.
         /// </summary>
@@ -67,30 +74,23 @@ namespace PhotoChartApp
             StaffDatabase.ConnectionString = connectionString;
         }
 
-        /// <summary>
-        /// Get the database instance.
-        /// If it wasn't connected yet, it will connect with the current connection string
-        /// as it's a singleton too.
-        /// </summary>
-        /// <returns>The database object</returns>
-        public StaffDatabase GetDatabase()
+        public void ConnectToDatabase()
         {
+            UpdateDatabaseSettings();
+
+            database = StaffDatabase.GetInstance();
+            
+
             try
-            { 
-                StaffDatabase database =  StaffDatabase.GetInstance();
-
-                try
-                {
-                    database.DataContext.Services.First();
-                }
-                catch
-                {
-                    return null;
-                }
-
-                return database;
+            {
+                database.DataContext.Services.First();
             }
-            catch { throw; }
+            catch
+            {
+                database = null;
+                throw new Exception("Aucune connexion n'a pu être ouverte.\n" +
+                    "Veuillez vérifier les paramètres de bases de données et que celle ci est active.");
+            }
         }
     }
 }

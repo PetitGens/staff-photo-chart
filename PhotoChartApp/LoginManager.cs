@@ -45,7 +45,7 @@ namespace PhotoChartApp
         {
             user = null;
 
-            StaffDatabase database = DatabaseConnector.Instance.GetDatabase();
+            StaffDatabase database = DatabaseConnector.Instance.Database;
 
             if (database == null)
             {

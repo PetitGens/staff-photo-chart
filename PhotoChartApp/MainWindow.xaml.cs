@@ -25,8 +25,6 @@ namespace PhotoChartApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private StaffDatabase database;
-
         /// <value>
         /// The database object (or null if not connected).
         /// It permits to manage staff, services and functions.
@@ -35,18 +33,7 @@ namespace PhotoChartApp
         /// </value>
         private StaffDatabase Database
         {
-            get { return database;}
-            set
-            {
-                database = value;
-                if(value == null)
-                {
-                    MenuItemManagement.IsEnabled = false;
-                    SetManagementMenusState(false);
-                }
-                UpdateDataContexts();
-                UpdateWindowTitle();
-            }
+            get { return DatabaseConnector.Instance.Database; }
         }
 
         /// <value>
@@ -56,12 +43,12 @@ namespace PhotoChartApp
         {
             get
             {
-                if(database == null)
+                if(Database == null)
                 {
                     return null;
                 }
 
-                return database.DataContext.Services;
+                return Database.DataContext.Services;
             }
         }
 
@@ -72,12 +59,12 @@ namespace PhotoChartApp
         {
             get
             {
-                if (database == null)
+                if (Database == null)
                 {
                     return null;
                 }
 
-                return database.DataContext.Fonctions;
+                return Database.DataContext.Fonctions;
             }
         }
 
@@ -87,16 +74,18 @@ namespace PhotoChartApp
         public MainWindow()
         {
             InitializeComponent();
-            Database = null;
-            
-           /* LoginWindow loginWindow = new LoginWindow();
-            loginWindow.ShowDialog();
+            UpdateDatabaseState();
+        }
 
-            ServicesManagementWindow servicesManagementWindow = new ServicesManagementWindow();
-            servicesManagementWindow.Show();
+        private void UpdateDatabaseState()
+        {
+            UpdateDataContexts();
+            UpdateWindowTitle();
 
-            FunctionsManagementWindow functionsManagementWindow = new FunctionsManagementWindow();
-            functionsManagementWindow.Show();*/
+            bool databaseConnected = Database != null;
+
+            MenuItemStaffList.IsEnabled = databaseConnected;
+            MenuItemManagement.IsEnabled = databaseConnected;
         }
 
         /// <summary>
@@ -109,6 +98,14 @@ namespace PhotoChartApp
             ListBoxServices.DataContext = Services;
             ListBoxFunctions.DataContext = Functions;
             ListBoxMembers.DataContext = null;
+        }
+
+        private void UpdateLoginState()
+        {
+            if (LoginManager.Instance.IsLoggedIn())
+            {
+                SetManagementMenusState(true);
+            }
         }
 
         /// <summary>
@@ -150,25 +147,15 @@ namespace PhotoChartApp
         {
             try
             {
-                DatabaseConnector.Instance.UpdateDatabaseSettings();
-                Database = DatabaseConnector.Instance.GetDatabase();
-                if(Database == null)
-                {
-                    throw new Exception("Aucune connexion n'a pu être ouverte.\n" +
-                        "Veuillez vérifier les paramètres de bases de données et que celle ci est active.");
-                }
-                Database.GetStaffList();
+                DatabaseConnector.Instance.ConnectToDatabase();
             }
             catch (Exception ex)
             {
                 new ErrorAlert("Erreur de connexion à la base de données :\n" + ex.Message,
                     "Erreur base de données").Show();
-                Database = null;
-                return;
             }
 
-            Title = "TROMBINOSCOPE - CONNECTÉ";
-            MenuItemManagement.IsEnabled = true;
+            UpdateDatabaseState();
         }
 
         /// <summary>
@@ -209,19 +196,15 @@ namespace PhotoChartApp
                 return;
             }
 
+            new LoginWindow().ShowDialog();
+
             LoginManager loginManager = LoginManager.Instance;
 
-            if((new LoginWindow()).ShowDialog() == true || loginManager.IsLoggedIn())
-            {
-                SetManagementMenusState(true);
-            }
-
-            UpdateWindowTitle();
+            UpdateLoginState();
         }
 
         private void SetManagementMenusState(bool enabled)
         {
-            MenuItemStaffList.IsEnabled = enabled;
             MenuItemServiceManagement.IsEnabled = enabled;
             MenuItemFunctionManagement.IsEnabled = enabled;
             MenuItemStaffManagement.IsEnabled = enabled;
