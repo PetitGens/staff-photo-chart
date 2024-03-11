@@ -73,11 +73,8 @@ namespace PhotoChartApp
         /// </summary>
         public MainWindow()
         {
-            DatabaseConnector.Instance.ConnectToDatabase();
             InitializeComponent();
             UpdateDatabaseState();
-
-            new ServicesManagementWindow(UpdateDataContexts).Show();
         }
 
         private void UpdateDatabaseState()
@@ -230,7 +227,7 @@ namespace PhotoChartApp
 
         private void MenuItemServiceManagement_Click(object sender, RoutedEventArgs e)
         {
-            new ServicesManagementWindow(UpdateDataContexts).Show();
+            new ServicesManagementWindow().Show();
         }
 
         private void MenuItemFunctionManagement_Click(object sender, RoutedEventArgs e)

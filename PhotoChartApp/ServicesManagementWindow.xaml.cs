@@ -21,10 +21,6 @@ namespace PhotoChartApp
     /// </summary>
     public partial class ServicesManagementWindow : Window
     {
-        public delegate void Callback();
-
-        private Callback OnServiceAdd;
-
         private StaffDatabase Database
         {
             get
@@ -33,9 +29,8 @@ namespace PhotoChartApp
             }
         }
 
-        public ServicesManagementWindow(Callback OnServiceAdd)
+        public ServicesManagementWindow()
         {
-            this.OnServiceAdd = OnServiceAdd;
             InitializeComponent();
             
             DataContext = Database.Services;

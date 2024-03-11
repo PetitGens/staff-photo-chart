@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BddpersonnelContext;
+using StaffDatabaseDll;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,35 @@ namespace PhotoChartApp
     /// </summary>
     public partial class FunctionsManagementWindow : Window
     {
+        private StaffDatabase Database
+        {
+            get
+            {
+                return DatabaseConnector.Instance.Database;
+            }
+        }
+
         public FunctionsManagementWindow()
         {
             InitializeComponent();
+            DataContext = Database.Fonctions;
+        }
+
+        private void TextBoxAddFunction_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ButtonAddFunction.IsEnabled = TextBoxAddFunction.Text != "";
+        }
+
+        private void ButtonAddFunction_Click(object sender, RoutedEventArgs e)
+        {
+            Fonction newFunction = new Fonction
+            {
+                Intitule = TextBoxAddFunction.Text
+            };
+
+            Database.InsertFunction(newFunction);
+
+            TextBoxAddFunction.Text = "";
         }
     }
 }
