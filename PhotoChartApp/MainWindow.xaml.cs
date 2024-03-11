@@ -201,6 +201,7 @@ namespace PhotoChartApp
             LoginManager loginManager = LoginManager.Instance;
 
             UpdateLoginState();
+            UpdateWindowTitle();
         }
 
         private void SetManagementMenusState(bool enabled)
