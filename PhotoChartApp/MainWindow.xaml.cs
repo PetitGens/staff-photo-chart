@@ -41,9 +41,11 @@ namespace PhotoChartApp
                 database = value;
                 if(value == null)
                 {
-                    Title = "TROMBINOSCOPE - NON CONNECTÉ";
+                    MenuItemManagement.IsEnabled = false;
+                    SetManagementMenusState(false);
                 }
                 UpdateDataContexts();
+                UpdateWindowTitle();
             }
         }
 
@@ -150,6 +152,11 @@ namespace PhotoChartApp
             {
                 DatabaseConnector.Instance.UpdateDatabaseSettings();
                 Database = DatabaseConnector.Instance.GetDatabase();
+                if(Database == null)
+                {
+                    throw new Exception("Aucune connexion n'a pu être ouverte.\n" +
+                        "Veuillez vérifier les paramètres de bases de données et que celle ci est active.");
+                }
                 Database.GetStaffList();
             }
             catch (Exception ex)
@@ -161,6 +168,7 @@ namespace PhotoChartApp
             }
 
             Title = "TROMBINOSCOPE - CONNECTÉ";
+            MenuItemManagement.IsEnabled = true;
         }
 
         /// <summary>
@@ -208,7 +216,7 @@ namespace PhotoChartApp
                 SetManagementMenusState(true);
             }
 
-
+            UpdateWindowTitle();
         }
 
         private void SetManagementMenusState(bool enabled)
@@ -217,6 +225,22 @@ namespace PhotoChartApp
             MenuItemServiceManagement.IsEnabled = enabled;
             MenuItemFunctionManagement.IsEnabled = enabled;
             MenuItemStaffManagement.IsEnabled = enabled;
+        }
+
+        private void UpdateWindowTitle()
+        {
+            if(Database == null)
+            {
+                Title = "TROMBINOSCOPE - NON CONNECTÉ";
+            }
+            else
+            {
+                Title = "TROMBINOSCOPE - CONNECTÉ";
+                if (LoginManager.Instance.IsLoggedIn())
+                {
+                    Title += " EN TANT QUE " + LoginManager.Instance.Username;
+                }
+            }
         }
     }
 }

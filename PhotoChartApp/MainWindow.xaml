@@ -21,7 +21,7 @@
             <MenuItem x:Name="MenuItemServiceManagement" Header="Gestion : Services" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False" />
             <MenuItem x:Name="MenuItemFunctionManagement" Header="Gestion : Fontions" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False" />
             <MenuItem x:Name="MenuItemStaffManagement" Header="Gestion : Personnels" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False" />
-            <MenuItem x:Name="MenuItemManagement" Header="Gestionnaire" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" Click="MenuItemManagement_Click" />
+            <MenuItem x:Name="MenuItemManagement" Header="Gestionnaire" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" Click="MenuItemManagement_Click" IsEnabled="False"/>
             <MenuItem x:Name="MenuItemDBSettings" Header="Paramètres BDD" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" Click="MenuItemDBSettings_Click" />
         </Menu>
         <Border BorderBrush="#FF828790" BorderThickness="1" Margin="10" CornerRadius="8" Grid.Row="1" MinWidth="400" MinHeight="250">
