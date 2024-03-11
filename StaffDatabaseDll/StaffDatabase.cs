@@ -27,9 +27,9 @@ namespace StaffDatabaseDll
         {
             get
             {
-                if (personnels == null)
+                if(personnels == null)
                 {
-                    personnels = new ObservableCollection<Personnel>(dataContext.Personnels.ToList());
+                    personnels = new ObservableCollection<Personnel>(dataContext.Personnels);
                 }
                 return personnels;
             }
@@ -37,23 +37,23 @@ namespace StaffDatabaseDll
 
         public ObservableCollection<Service> Services
         {
-            get 
+            get
             {
-                if(services == null)
+                if (services == null)
                 {
-                    services = new ObservableCollection<Service>(dataContext.Services.ToList());
+                    services = new ObservableCollection<Service>(dataContext.Services);
                 }
                 return services;
             }
         }
 
-        public ObservableCollection<Fonction> Functions
+        public ObservableCollection<Fonction> Fonctions
         {
             get
             {
-                if(functions == null)
+                if (functions == null)
                 {
-                    functions = new ObservableCollection<Fonction>(dataContext.Fonctions.ToList());
+                    functions = new ObservableCollection<Fonction>(dataContext.Fonctions);
                 }
                 return functions;
             }
@@ -100,16 +100,26 @@ namespace StaffDatabaseDll
             }
         }
 
-        public List<Service> GetServicesList()
+        public void InsertService(Service service)
         {
-            try
-            {
-                return dataContext.Services.ToList();
-            }
-            catch
-            {
-                throw;
-            }
+            int id = dataContext.Services.Max(s => s.Id) + 1;
+            service.Id = id;
+
+            dataContext.Services.InsertOnSubmit(service);
+            dataContext.SubmitChanges();
+
+            services.Add(service);
+        }
+
+        public void InsertFunction(Fonction function)
+        {
+            int id = dataContext.Fonctions.Max(s => s.Id) + 1;
+            function.Id = id;
+
+            dataContext.Fonctions.InsertOnSubmit(function);
+            dataContext.SubmitChanges();
+
+            functions.Add(function);
         }
     }
 }

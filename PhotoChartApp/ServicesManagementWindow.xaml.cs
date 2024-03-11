@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BddpersonnelContext;
+using StaffDatabaseDll;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,41 @@ namespace PhotoChartApp
     /// </summary>
     public partial class ServicesManagementWindow : Window
     {
-        public ServicesManagementWindow()
+        public delegate void Callback();
+
+        private Callback OnServiceAdd;
+
+        private StaffDatabase Database
         {
+            get
+            {
+                return DatabaseConnector.Instance.Database;
+            }
+        }
+
+        public ServicesManagementWindow(Callback OnServiceAdd)
+        {
+            this.OnServiceAdd = OnServiceAdd;
             InitializeComponent();
+            
+            DataContext = Database.Services;
+        }
+
+        private void TextBoxAddService_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ButtonAddService.IsEnabled = TextBoxAddService.Text != "";
+        }
+
+        private void ButtonAddService_Click(object sender, RoutedEventArgs e)
+        {
+            Service newService = new Service
+            {
+                Intitule = TextBoxAddService.Text
+            };
+            
+            Database.InsertService(newService);
+
+            TextBoxAddService.Text = "";
         }
     }
 }

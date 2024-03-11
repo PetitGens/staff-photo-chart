@@ -48,7 +48,7 @@ namespace PhotoChartApp
                     return null;
                 }
 
-                return Database.DataContext.Services;
+                return Database.Services;
             }
         }
 
@@ -64,7 +64,7 @@ namespace PhotoChartApp
                     return null;
                 }
 
-                return Database.DataContext.Fonctions;
+                return Database.Fonctions;
             }
         }
 
@@ -73,8 +73,11 @@ namespace PhotoChartApp
         /// </summary>
         public MainWindow()
         {
+            DatabaseConnector.Instance.ConnectToDatabase();
             InitializeComponent();
             UpdateDatabaseState();
+
+            new ServicesManagementWindow(UpdateDataContexts).Show();
         }
 
         private void UpdateDatabaseState()
@@ -93,7 +96,7 @@ namespace PhotoChartApp
         /// <br/>
         /// Must be called when the database connection is updated.
         /// </summary>
-        private void UpdateDataContexts()
+        public void UpdateDataContexts()
         {
             ListBoxServices.DataContext = Services;
             ListBoxFunctions.DataContext = Functions;
@@ -198,8 +201,6 @@ namespace PhotoChartApp
 
             new LoginWindow().ShowDialog();
 
-            LoginManager loginManager = LoginManager.Instance;
-
             UpdateLoginState();
             UpdateWindowTitle();
         }
@@ -225,6 +226,16 @@ namespace PhotoChartApp
                     Title += " EN TANT QUE " + LoginManager.Instance.Username;
                 }
             }
+        }
+
+        private void MenuItemServiceManagement_Click(object sender, RoutedEventArgs e)
+        {
+            new ServicesManagementWindow(UpdateDataContexts).Show();
+        }
+
+        private void MenuItemFunctionManagement_Click(object sender, RoutedEventArgs e)
+        {
+            new FunctionsManagementWindow().Show();
         }
     }
 }

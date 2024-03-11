@@ -17,13 +17,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="ListViewServices" d:ItemsSource="{d:SampleData ItemCount=105}" Grid.RowSpan="3" Margin="10" FontFamily="Ubuntu">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ListBox x:Name="ListViewServices" ItemsSource="{Binding}" DisplayMemberPath="Intitule" Grid.RowSpan="3" Margin="10" FontFamily="Ubuntu"/>
         <Label Grid.Row="0" Grid.Column="1" Content="SERVICES" FontFamily="Ubuntu" FontWeight="Bold" Foreground="#FFF" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">
 
         </Label>
@@ -35,7 +29,7 @@
             <Label Content="Modification service :" FontFamily="Ubuntu" FontWeight="Bold" Foreground="#FFF" FontSize="14" VerticalAlignment="Bottom">
                 
             </Label>
-            <TextBox x:Name="TextBoxEditService" Grid.Row="1" TextWrapping="Wrap" Text="lorem"  Height="30" FontFamily="Ubuntu" FontSize="14"/>
+            <TextBox x:Name="TextBoxEditService" Grid.Row="1" TextWrapping="NoWrap" Text="{Binding ElementName=ListViewServices, Path=SelectedItem.Intitule}"  Height="30" FontFamily="Ubuntu" FontSize="14"/>
             
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
@@ -44,9 +38,9 @@
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
 
-            <TextBox x:Name="TextBoxAddService" Grid.Row="0" Margin="5,5,10,5" TextWrapping="Wrap" Text="ipsum" VerticalAlignment="Bottom"  Height="30" FontFamily="Ubuntu" FontSize="14"/>
+            <TextBox x:Name="TextBoxAddService" Grid.Row="0" Margin="5,5,10,5" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom"  Height="30" FontFamily="Ubuntu" FontSize="14" TextChanged="TextBoxAddService_TextChanged"/>
 
-            <Button x:Name="ButtonAddService" Content="Ajouter" Grid.Row="1" Margin="5,5,10,5" Height="50" VerticalAlignment="Top" Foreground="#FF4F6C7C" Background="#FFDAE3E8"  FontFamily="Ubuntu" FontWeight="Bold" FontSize="16"/>
+            <Button x:Name="ButtonAddService" Content="Ajouter" Grid.Row="1" Margin="5,5,10,5" Height="50" VerticalAlignment="Top" Foreground="#FF4F6C7C" Background="#FFDAE3E8"  FontFamily="Ubuntu" FontWeight="Bold" FontSize="16" IsEnabled="False" Click="ButtonAddService_Click"/>
         </Grid>
         
   
