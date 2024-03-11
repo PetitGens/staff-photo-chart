@@ -225,5 +225,11 @@ namespace PhotoChartApp
                 }
             }
         }
+
+        private void MenuItemStaffList_Click(object sender, RoutedEventArgs e)
+        {
+            StaffListWindow staffListWindow = new StaffListWindow();
+            staffListWindow.Show();
+        }
     }
 }
