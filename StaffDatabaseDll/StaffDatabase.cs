@@ -18,11 +18,6 @@ namespace StaffDatabaseDll
         private static StaffDatabase instance = null;
         private static string connectionString = "";
 
-        public BddpersonnelDataContext DataContext
-        {
-            get { return dataContext; }
-        }
-
         public ObservableCollection<Personnel> Personnels
         {
             get
@@ -88,16 +83,21 @@ namespace StaffDatabaseDll
             return instance;
         }
 
-        public List<Personnel> GetStaffList()
+        public void TestConnection()
         {
-            try
-            {
-                return dataContext.Personnels.ToList();
-            }
-            catch
-            {
-                throw;
-            }
+            dataContext.Services.First();
+        }
+
+        public void SubmitChanges()
+        {
+            dataContext.SubmitChanges();
+        }
+
+        public Gestionnaire GetManager(string username)
+        {
+            return dataContext.Gestionnaires.SingleOrDefault(
+                g => g.Username == username
+            );
         }
 
         public void InsertService(Service service)

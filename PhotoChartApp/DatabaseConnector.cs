@@ -83,7 +83,7 @@ namespace PhotoChartApp
 
             try
             {
-                database.DataContext.Services.First();
+                database.TestConnection();
             }
             catch
             {
