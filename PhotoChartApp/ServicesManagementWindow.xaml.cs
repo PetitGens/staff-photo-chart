@@ -52,5 +52,12 @@ namespace PhotoChartApp
 
             TextBoxAddService.Text = "";
         }
+
+        private void ButtonModifyService_Click(object sender, RoutedEventArgs e)
+        {
+            Service modified = (Service)ListViewServices.SelectedItem;
+            modified.Intitule = TextBoxEditService.Text;
+            Database.SubmitChanges();
+        }
     }
 }

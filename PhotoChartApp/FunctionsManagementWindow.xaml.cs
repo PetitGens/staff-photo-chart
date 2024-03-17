@@ -51,5 +51,12 @@ namespace PhotoChartApp
 
             TextBoxAddFunction.Text = "";
         }
+
+        private void ButtonEditFunction_Click(object sender, RoutedEventArgs e)
+        {
+            Fonction modified = (Fonction)ListViewFunctions.SelectedItem;
+            modified.Intitule = TextBoxEditFunction.Text;
+            Database.SubmitChanges();
+        }
     }
 }
