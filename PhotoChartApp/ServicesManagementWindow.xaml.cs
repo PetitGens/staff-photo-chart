@@ -1,4 +1,5 @@
 ﻿using BddpersonnelContext;
+using Devart.Data.Linq;
 using StaffDatabaseDll;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,32 @@ namespace PhotoChartApp
             Service modified = (Service)ListViewServices.SelectedItem;
             modified.Intitule = TextBoxEditService.Text;
             Database.SubmitChanges();
+        }
+
+        private void MenuItemDeleteService_Click(object sender, RoutedEventArgs e)
+        {
+            Service selected = (Service)ListViewServices.SelectedItem;
+            ConfirmationDialog dialog = new ConfirmationDialog(
+                "Voulez-vous vraiment supprimer le service " + selected.Intitule + " ?",
+                "Confirmation de suppresion");
+
+            if (dialog.Show() != MessageBoxResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                Database.DeleteService(selected);
+            }
+            catch (LinqCommandExecutionException)
+            {
+                new ErrorAlert(
+                    "La suppresion est impossible car du personnel est affecté à ce service.\n" +
+                    "Réaffecter ou supprimer la ou les personnes concernée(s) et réessayer.",
+                    "Échec de le suppresion."
+                ).Show();
+            }
         }
     }
 }

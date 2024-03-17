@@ -17,7 +17,18 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="ListViewFunctions" ItemsSource="{Binding}" DisplayMemberPath="Intitule" Grid.RowSpan="3" Margin="10" FontFamily="Ubuntu"/>
+        <ListBox x:Name="ListViewFunctions" ItemsSource="{Binding}" DisplayMemberPath="Intitule" Grid.RowSpan="3" Margin="10" FontFamily="Ubuntu">
+            <ListBox.Resources>
+                <ContextMenu x:Key="contextMenuFunction">
+                    <MenuItem Header="Supprimer" Click="MenuItemDeleteFunction_Click"/>
+                </ContextMenu>
+            </ListBox.Resources>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="ContextMenu" Value="{StaticResource contextMenuFunction}"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
 
         <Label Grid.Row="0" Grid.Column="1" Content="FONCTIONS" FontFamily="Ubuntu" FontWeight="Bold" Foreground="#FFF" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom">
 

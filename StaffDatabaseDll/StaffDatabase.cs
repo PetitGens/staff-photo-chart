@@ -121,5 +121,21 @@ namespace StaffDatabaseDll
 
             functions.Add(function);
         }
+
+        public void DeleteService(Service service)
+        {
+            dataContext.Services.DeleteOnSubmit(service);
+            dataContext.SubmitChanges();
+
+            services.Remove(service);
+        }
+
+        public void DeleteFunction(Fonction function)
+        {
+            dataContext.Fonctions.DeleteOnSubmit(function);
+            dataContext.SubmitChanges();
+
+            functions.Remove(function);
+        }
     }
 }
