@@ -18,6 +18,11 @@ namespace StaffDatabaseDll
         private static StaffDatabase instance = null;
         private static string connectionString = "";
 
+        public BddpersonnelDataContext DataContext
+        {
+            get { return dataContext; }
+        }
+
         public ObservableCollection<Personnel> Personnels
         {
             get
