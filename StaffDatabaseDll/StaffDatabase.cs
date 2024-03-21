@@ -18,18 +18,13 @@ namespace StaffDatabaseDll
         private static StaffDatabase instance = null;
         private static string connectionString = "";
 
-        public BddpersonnelDataContext DataContext
-        {
-            get { return dataContext; }
-        }
-
         public ObservableCollection<Personnel> Personnels
         {
             get
             {
-                if (personnels == null)
+                if(personnels == null)
                 {
-                    personnels = new ObservableCollection<Personnel>(dataContext.Personnels.ToList());
+                    personnels = new ObservableCollection<Personnel>(dataContext.Personnels);
                 }
                 return personnels;
             }
@@ -37,23 +32,23 @@ namespace StaffDatabaseDll
 
         public ObservableCollection<Service> Services
         {
-            get 
+            get
             {
-                if(services == null)
+                if (services == null)
                 {
-                    services = new ObservableCollection<Service>(dataContext.Services.ToList());
+                    services = new ObservableCollection<Service>(dataContext.Services);
                 }
                 return services;
             }
         }
 
-        public ObservableCollection<Fonction> Functions
+        public ObservableCollection<Fonction> Fonctions
         {
             get
             {
-                if(functions == null)
+                if (functions == null)
                 {
-                    functions = new ObservableCollection<Fonction>(dataContext.Fonctions.ToList());
+                    functions = new ObservableCollection<Fonction>(dataContext.Fonctions);
                 }
                 return functions;
             }
@@ -88,28 +83,59 @@ namespace StaffDatabaseDll
             return instance;
         }
 
-        public List<Personnel> GetStaffList()
+        public void TestConnection()
         {
-            try
-            {
-                return dataContext.Personnels.ToList();
-            }
-            catch
-            {
-                throw;
-            }
+            dataContext.Services.First();
         }
 
-        public List<Service> GetServicesList()
+        public void SubmitChanges()
         {
-            try
-            {
-                return dataContext.Services.ToList();
-            }
-            catch
-            {
-                throw;
-            }
+            dataContext.SubmitChanges();
+        }
+
+        public Gestionnaire GetManager(string username)
+        {
+            return dataContext.Gestionnaires.SingleOrDefault(
+                g => g.Username == username
+            );
+        }
+
+        public void InsertService(Service service)
+        {
+            int id = dataContext.Services.Max(s => s.Id) + 1;
+            service.Id = id;
+
+            dataContext.Services.InsertOnSubmit(service);
+            dataContext.SubmitChanges();
+
+            services.Add(service);
+        }
+
+        public void InsertFunction(Fonction function)
+        {
+            int id = dataContext.Fonctions.Max(s => s.Id) + 1;
+            function.Id = id;
+
+            dataContext.Fonctions.InsertOnSubmit(function);
+            dataContext.SubmitChanges();
+
+            functions.Add(function);
+        }
+
+        public void DeleteService(Service service)
+        {
+            dataContext.Services.DeleteOnSubmit(service);
+            dataContext.SubmitChanges();
+
+            services.Remove(service);
+        }
+
+        public void DeleteFunction(Fonction function)
+        {
+            dataContext.Fonctions.DeleteOnSubmit(function);
+            dataContext.SubmitChanges();
+
+            functions.Remove(function);
         }
     }
 }

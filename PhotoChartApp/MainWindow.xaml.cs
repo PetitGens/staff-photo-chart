@@ -48,7 +48,7 @@ namespace PhotoChartApp
                     return null;
                 }
 
-                return Database.DataContext.Services;
+                return Database.Services;
             }
         }
 
@@ -64,7 +64,7 @@ namespace PhotoChartApp
                     return null;
                 }
 
-                return Database.DataContext.Fonctions;
+                return Database.Fonctions;
             }
         }
 
@@ -93,7 +93,7 @@ namespace PhotoChartApp
         /// <br/>
         /// Must be called when the database connection is updated.
         /// </summary>
-        private void UpdateDataContexts()
+        public void UpdateDataContexts()
         {
             ListBoxServices.DataContext = Services;
             ListBoxFunctions.DataContext = Functions;
@@ -198,9 +198,8 @@ namespace PhotoChartApp
 
             new LoginWindow().ShowDialog();
 
-            LoginManager loginManager = LoginManager.Instance;
-
             UpdateLoginState();
+            UpdateWindowTitle();
         }
 
         private void SetManagementMenusState(bool enabled)
@@ -230,6 +229,16 @@ namespace PhotoChartApp
         {
             StaffListWindow staffListWindow = new StaffListWindow();
             staffListWindow.Show();
+        }
+        
+        private void MenuItemServiceManagement_Click(object sender, RoutedEventArgs e)
+        {
+            new ServicesManagementWindow().Show();
+        }
+
+        private void MenuItemFunctionManagement_Click(object sender, RoutedEventArgs e)
+        {
+            new FunctionsManagementWindow().Show();
         }
     }
 }

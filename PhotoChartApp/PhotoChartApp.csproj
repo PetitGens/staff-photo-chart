@@ -56,6 +56,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConfirmationDialog.cs" />
+    <Compile Include="Dialog.cs" />
     <Compile Include="LoginManager.cs" />
     <Compile Include="ServicesManagementWindow.xaml.cs">
       <DependentUpon>ServicesManagementWindow.xaml</DependentUpon>
@@ -63,9 +65,7 @@
     <Compile Include="FunctionsManagementWindow.xaml.cs">
       <DependentUpon>FunctionsManagementWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StaffListWindow.xaml.cs">
-      <DependentUpon>StaffListWindow.xaml</DependentUpon>
-    </Compile>
+
     
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -96,11 +96,11 @@
       <DependentUpon>DatabaseConfigWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-
     <Compile Include="DatabaseConnector.cs" />
-
-    
-
+    <Compile Include="StaffListWindow.xaml.cs">
+      <DependentUpon>StaffListWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

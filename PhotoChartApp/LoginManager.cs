@@ -52,9 +52,7 @@ namespace PhotoChartApp
                 throw new ArgumentNullException("Database is not connected");
             }
 
-            Gestionnaire gestionnaire = database.DataContext.Gestionnaires.SingleOrDefault(
-                g => g.Username == username
-            );
+            Gestionnaire gestionnaire = database.GetManager(username);
 
             if (gestionnaire == null || gestionnaire.Motdepasse != password)
             {

@@ -48,7 +48,7 @@
                 <ColumnDefinition  Width="2*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="ButtonConnection" Content="Connexion" Margin="10" Grid.Column="0" FontWeight="Bold" FontFamily="Ubuntu" Foreground="#FF484848" Background="#FFC8DCD3" FontSize="18" Click="ButtonConnection_Click" />
-            <Button x:Name="ButtonCancel" Content="Annuler" Margin="10" Grid.Column="1" FontFamily="Ubuntu" Foreground="#FF484848" Background="#FFC8DCD3" FontSize="16"/>
+            <Button x:Name="ButtonCancel" Content="Annuler" Margin="10" Grid.Column="1" FontFamily="Ubuntu" Foreground="#FF484848" Background="#FFC8DCD3" FontSize="16" Click="ButtonCancel_Click"/>
         </Grid>
 
     </Grid>
