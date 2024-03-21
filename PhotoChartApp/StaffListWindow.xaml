@@ -6,23 +6,33 @@
         xmlns:local="clr-namespace:PhotoChartApp"
         mc:Ignorable="d"
 
-        Title="Liste du personnel" Height="450" Width="800">
+        Title="Liste du personnel" Height="450" Width="750" MinHeight="350" MinWidth="660">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*" MinWidth="450"/>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="2*" MinWidth="150"/>
+            <ColumnDefinition Width="2*" MinWidth="170"/>
         </Grid.ColumnDefinitions>
         <DataGrid 
             Grid.Column="0"
             Margin="20"
             x:Name="DataGridStaffList" 
-            d:ItemsSource="{d:SampleData ItemCount=5}"/>
+            d:ItemsSource="{d:SampleData ItemCount=5}"
+            AutoGenerateColumns="False"
+            >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
+                <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />
+                <DataGridTextColumn Header="Tél." Binding="{Binding Telephone}" />
+                
+            </DataGrid.Columns>
+        </DataGrid>
         <GridSplitter Margin="5" Grid.Row="1" Grid.Column="1" Width="4" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
         <Grid Grid.Column="2" Margin="20" VerticalAlignment="Center">
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="130"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -31,16 +41,23 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Content="Nom du Personnel" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" FontWeight="Bold"/>
-                <TextBox x:Name="TextBoxStaffName" Grid.Row="1" Height="30"/>
+                <TextBox x:Name="TextBoxStaffName" Grid.Row="1" Height="30" TextChanged="TextBoxStaffName_TextChanged"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="Prénom du Personnel" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" FontWeight="Bold"/>
-                <TextBox x:Name="TextBoxStaffFirstName" Grid.Row="1" Height="30"/>
+                <Label Grid.Row="0" Content="Prénom du Personnel"  VerticalAlignment="Bottom" HorizontalContentAlignment="Center" FontWeight="Bold"/>
+                <TextBox x:Name="TextBoxStaffFirstName" Grid.Row="1" Height="30" TextChanged="TextBoxStaffFirstName_TextChanged"/>
             </Grid>
+            
+            <GroupBox Header="Photo" Grid.Row="2">
+                <Image HorizontalAlignment="Center" Height="100" Grid.Row="2" VerticalAlignment="Center" Width="100" />
+            </GroupBox>
+
+
+
         </Grid>
     </Grid>
 </Window>

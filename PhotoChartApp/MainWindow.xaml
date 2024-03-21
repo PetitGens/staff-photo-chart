@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <Menu Margin="0" Grid.ColumnSpan="5">
             <MenuItem x:Name="MenuItemDBConnect" Header="Connexion BDD" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" Click="MenuItemDBConnect_Click"/>
-            <MenuItem x:Name="MenuItemStaffList" Header="Liste du Personnel" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False" Click="MenuItemStaffList_Click"/>
+            <MenuItem x:Name="MenuItemStaffList" Header="Liste du Personnel" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" Click="MenuItemStaffList_Click" IsEnabled="False"/>
             <MenuItem x:Name="MenuItemServiceManagement" Header="Gestion : Services" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False" />
             <MenuItem x:Name="MenuItemFunctionManagement" Header="Gestion : Fontions" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False" />
             <MenuItem x:Name="MenuItemStaffManagement" Header="Gestion : Personnels" Height="30px" Margin="2,0" FontFamily="Ubuntu" FontSize="9" FontWeight="Bold" IsEnabled="False" />
@@ -107,8 +107,8 @@
             <Label Content="Nom" HorizontalAlignment="Right" Margin="0" Grid.Row="1" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
             <Label Content="Prénom" HorizontalAlignment="Right" Margin="0" Grid.Row="2" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
             <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="4" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
-            <Label Content="Fonction" HorizontalAlignment="Right" Margin="0" Grid.Row="5" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
-            <Label Content="Tél." HorizontalAlignment="Right" Margin="0" Grid.Row="6" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
+            <Label Content="Function" HorizontalAlignment="Right" Margin="0" Grid.Row="5" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
+            <Label Content="Service" HorizontalAlignment="Right" Margin="0" Grid.Row="6" Height="Auto" FontFamily="Ubuntu" VerticalAlignment="Center"/>
         </Grid>
     </Grid>
 </Window>

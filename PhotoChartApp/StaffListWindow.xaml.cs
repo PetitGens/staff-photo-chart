@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StaffDatabaseDll;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace PhotoChartApp
 {
     /// <summary>
@@ -19,9 +21,35 @@ namespace PhotoChartApp
     /// </summary>
     public partial class StaffListWindow : Window
     {
+
+        private StaffDatabase Database
+        {
+            get
+            {
+                return DatabaseConnector.Instance.Database;
+            }
+        }
         public StaffListWindow()
         {
             InitializeComponent();
+            DataContext = Database.DataContext.Personnels;
+            DataGridStaffList.ItemsSource = Database.DataContext.Personnels;
+            
+        }
+
+        
+
+
+
+
+        private void TextBoxStaffName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBoxStaffFirstName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
