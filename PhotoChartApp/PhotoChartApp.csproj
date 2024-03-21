@@ -65,8 +65,6 @@
     <Compile Include="FunctionsManagementWindow.xaml.cs">
       <DependentUpon>FunctionsManagementWindow.xaml</DependentUpon>
     </Compile>
-
-    
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,7 +111,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -146,6 +143,9 @@
       <Project>{31b6430d-94ae-4c53-80b6-d32778ce8d52}</Project>
       <Name>StaffDatabaseDll</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="defaultimage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
