@@ -24,7 +24,8 @@
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
                 <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />
                 <DataGridTextColumn Header="Tél." Binding="{Binding Telephone}" />
-                
+				<DataGridTextColumn Header="Fonction" Binding="{Binding Fonction.Intitule}" />
+                <DataGridTextColumn Header="Service" Binding="{Binding Service.Intitule}" />
             </DataGrid.Columns>
         </DataGrid>
         <GridSplitter Margin="5" Grid.Row="1" Grid.Column="1" Width="4" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
