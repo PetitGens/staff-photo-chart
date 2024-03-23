@@ -65,13 +65,15 @@
     <Compile Include="FunctionsManagementWindow.xaml.cs">
       <DependentUpon>FunctionsManagementWindow.xaml</DependentUpon>
     </Compile>
-
-    
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DatabaseConfigWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StaffCreationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,6 +99,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatabaseConnector.cs" />
+    <Compile Include="StaffCreationWindow.xaml.cs">
+      <DependentUpon>StaffCreationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StaffListWindow.xaml.cs">
       <DependentUpon>StaffListWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -113,7 +118,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

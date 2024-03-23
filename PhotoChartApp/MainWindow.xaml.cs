@@ -233,12 +233,29 @@ namespace PhotoChartApp
         
         private void MenuItemServiceManagement_Click(object sender, RoutedEventArgs e)
         {
+            if (LoginManager.Instance.IsLoggedIn() == false)
+            {
+                return;
+            }
             new ServicesManagementWindow().Show();
         }
 
         private void MenuItemFunctionManagement_Click(object sender, RoutedEventArgs e)
         {
+            if (LoginManager.Instance.IsLoggedIn() == false)
+            {
+                return;
+            }
             new FunctionsManagementWindow().Show();
+        }
+
+        private void MenuItemStaffManagement_Click(object sender, RoutedEventArgs e)
+        {
+            if(LoginManager.Instance.IsLoggedIn() == false)
+            {
+                return;
+            }   
+            new StaffCreationWindow().Show();
         }
     }
 }

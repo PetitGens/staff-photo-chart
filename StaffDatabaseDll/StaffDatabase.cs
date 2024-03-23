@@ -18,6 +18,9 @@ namespace StaffDatabaseDll
         private static StaffDatabase instance = null;
         private static string connectionString = "";
 
+        // The maximum size of an image in bytes
+        public const int MAX_IMAGE_SIZE = 65536;
+
         public BddpersonnelDataContext DataContext
         {
             get { return dataContext; }
@@ -132,7 +135,7 @@ namespace StaffDatabaseDll
             dataContext.Services.DeleteOnSubmit(service);
             dataContext.SubmitChanges();
 
-            services.Remove(service);
+            Services.Remove(service);
         }
 
         public void DeleteFunction(Fonction function)
@@ -140,7 +143,18 @@ namespace StaffDatabaseDll
             dataContext.Fonctions.DeleteOnSubmit(function);
             dataContext.SubmitChanges();
 
-            functions.Remove(function);
+            Fonctions.Remove(function);
+        }
+
+        public void InsertPersonnel(Personnel personnel)
+        {
+            int id = dataContext.Personnels.Max(p => p.Id) + 1;
+            personnel.Id = id;
+
+            dataContext.Personnels.InsertOnSubmit(personnel);
+            dataContext.SubmitChanges();
+
+            Personnels.Add(personnel);
         }
     }
 }
