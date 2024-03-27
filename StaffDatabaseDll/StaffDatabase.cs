@@ -21,11 +21,6 @@ namespace StaffDatabaseDll
         // The maximum size of an image in bytes
         public const int MAX_IMAGE_SIZE = 65536;
 
-        public BddpersonnelDataContext DataContext
-        {
-            get { return dataContext; }
-        }
-
         public ObservableCollection<Personnel> Personnels
         {
             get

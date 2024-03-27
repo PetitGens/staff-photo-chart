@@ -32,8 +32,8 @@ namespace PhotoChartApp
         public StaffListWindow()
         {
             InitializeComponent();
-            DataContext = Database.DataContext.Personnels;
-            DataGridStaffList.ItemsSource = Database.DataContext.Personnels;
+            DataContext = Database.Personnels;
+            DataGridStaffList.ItemsSource = Database.Personnels;
             
         }
 
